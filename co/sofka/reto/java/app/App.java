@@ -16,6 +16,11 @@ public class App {
         Imprimir imprimir = new Imprimir();
         Ronda ronda = new Ronda();
         PreguntasDatos preguntasDatos = new PreguntasDatos();
+
+        //orden cronologico real
+
+
+
         //juego.continuarMenu(teclado);
 
         //imprimir.imprimirMesaje(""+preguntasDatos.getPreguntas().get(ronda.escogerPreguntaAleatoria()).toString());
@@ -23,6 +28,7 @@ public class App {
         //preguntasDatos.getPreguntas().get(ronda.escogerPreguntaAleatoria()).getCorrecta();
         //imprimir.imprimirMesaje(menu.mostrarDeseaContinuar());
         //juego.deseaContinuarMenu(teclado);
+        juego.continuarMenu(teclado);
 
     }
 }

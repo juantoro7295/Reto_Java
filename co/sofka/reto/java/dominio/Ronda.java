@@ -1,6 +1,7 @@
 package co.sofka.reto.java.dominio;
 
 import co.sofka.reto.java.util.Imprimir;
+import co.sofka.reto.java.util.Teclado;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -40,8 +41,5 @@ public class Ronda extends Imprimir {
     public void mostrarPreguntaJuego(){
       imprimirMesaje(""+preguntasDatos.getPreguntas().get(escogerPreguntaAleatoria()));
     }
-
-
-
 
 }

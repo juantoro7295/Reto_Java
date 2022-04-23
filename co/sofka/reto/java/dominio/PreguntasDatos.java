@@ -67,7 +67,7 @@ public class PreguntasDatos {
         Pregunta pregunta13 = new Pregunta("¿Cuál de los siguentes paises no integró a los Aliados durente la Segunda Guerra Mundial?", respuestas13, 1);
         preguntas.add(pregunta13);
 
-        String[] respuestas14 = new String[]{"La llegada al poder de Hitler", "El bombardeo a Pearl Harbor", "La Muerte de Franz Ferdinand", "REl desarrollo de la bomba atómica"};
+        String[] respuestas14 = new String[]{"La llegada al poder de Hitler", "El bombardeo a Pearl Harbor", "La Muerte de Franz Ferdinand", "El desarrollo de la bomba atómica"};
         Pregunta pregunta14 = new Pregunta("¿Qué desencadenó el inicio de la Primera Guerra Mundial?", respuestas14, 2);
         preguntas.add(pregunta14);
 
