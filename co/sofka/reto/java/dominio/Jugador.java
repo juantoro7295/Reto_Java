@@ -4,9 +4,9 @@ public class Jugador {
     private String nombre;
     private int puntaje;
 
-    public Jugador(String nombre) {
+    public Jugador(String nombre, int puntaje) {
         this.nombre = nombre;
-        this.puntaje = 0;
+        this.puntaje = puntaje;
     }
 
     public String getNombre() {

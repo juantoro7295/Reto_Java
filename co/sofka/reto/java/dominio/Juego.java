@@ -14,6 +14,8 @@ public class Juego extends Imprimir {
     Jugador jugador;
     Ronda ronda;
 
+    Historial historial;
+
     MenuInicio menuInicio = new MenuInicio();
 
     public Juego() {
@@ -21,8 +23,9 @@ public class Juego extends Imprimir {
         this.continuarJugando = true;
         this.respuestaJugadorPregunta = -1;
         preguntasDatos = new PreguntasDatos();
-        jugador = new Jugador("");
+        jugador = new Jugador("",0);
         ronda = new Ronda();
+        historial = new Historial();
 
     }
 
@@ -34,7 +37,9 @@ public class Juego extends Imprimir {
                 //pedir el nombre del jugador
 
                    //crearJugadorJuego(teclado);
-                pedirMostrarYvalidarOpciones(teclado);
+                //pedirMostrarYvalidarOpciones(teclado);
+                //menu desea continuar
+                deseaContinuarMenu(teclado);
                 this.continuo = false;
 
                 break;
@@ -87,10 +92,14 @@ public class Juego extends Imprimir {
             case 1:
                 //seguir en juego
                 //pasar siguiente ronda
+                this.continuarJugando = true;
+
                 break;
             case 2:
                 this.continuarJugando = false;
                 //guardar puntaje jugador en el historial
+
+
                 break;
             default:
                 imprimirMesaje("¡Parametro Invalido!");
@@ -100,26 +109,35 @@ public class Juego extends Imprimir {
 
     }
     public void deseaContinuarMenu(Teclado teclado) {
+
         do {
-            imprimirMesaje(menuInicio.mostrarDeseaContinuar());
-            opcionDelMenuContinuar(teclado);
+            pedirMostrarYvalidarOpciones(teclado);
+            if(this.continuarJugando){
+                imprimirMesaje(menuInicio.mostrarDeseaContinuar());
+                opcionDelMenuContinuar(teclado);
+
+            }
+
         } while (continuarJugando);
     }
 
     public void laPreguntaSeRespondeCorrectamente(Teclado teclado){
         if(validarPreguntaMostradaJuego(teclado)){
+            jugador.setPuntaje(jugador.getPuntaje()+100);
            imprimirMesaje("muy bien, respuesta correcta");
             //se le pasa el menu si desea continuar
         }
     }
     public void laPreguntaSeRepondeIncorrectamente(Teclado teclado){
         if(!validarPreguntaMostradaJuego(teclado)){
+            this.continuarJugando = false;
+            jugador.setPuntaje(0);
             imprimirMesaje(" UPSS , Respuesta incorrecta");
         }
     }
 
     public void larespuestaNoConcuerdaConLasOpciones(){
-        if(this.respuestaJugadorPregunta!= 1 || this.respuestaJugadorPregunta!= 2 || this.respuestaJugadorPregunta!= 3 || this.respuestaJugadorPregunta!= 4){
+        if(this.respuestaJugadorPregunta!= 0 || this.respuestaJugadorPregunta!= 1 || this.respuestaJugadorPregunta!= 2 || this.respuestaJugadorPregunta!= 3){
             imprimirMesaje("joven recuerda utilizar como respuesta 1 2 3 4 ");
 
         }
@@ -130,8 +148,10 @@ public class Juego extends Imprimir {
         this.respuestaJugadorPregunta = teclado.pedirRespuestaJugadorPorTeclado()-1;
         laPreguntaSeRespondeCorrectamente(teclado);
         laPreguntaSeRepondeIncorrectamente(teclado);
-        larespuestaNoConcuerdaConLasOpciones();
+        //larespuestaNoConcuerdaConLasOpciones();
     }
+
+
 
 
 }
