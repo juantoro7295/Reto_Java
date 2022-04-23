@@ -15,7 +15,7 @@ public class PreguntasDatos {
         preguntas.add(pregunta);
 
         String[] respuestas1 = new String[]{"1492", "1520", "1914", "1939"};
-        Pregunta pregunta1 = new Pregunta("¿En que año fue la primera guerra mundial?", respuestas1, 2);
+        Pregunta pregunta1 = new Pregunta("¿En que año fue la primera guerra mundial?", respuestas1, 3);
         preguntas.add(pregunta1);
 
         String[] respuestas2 = new String[]{"1492", "1939", "1914", "1945"};
@@ -109,11 +109,11 @@ public class PreguntasDatos {
         preguntas.add(pregunta23);
 
         String[] respuestas24 = new String[]{"64","60", "56", "58"};
-        Pregunta pregunta24 = new Pregunta("¿Cuántos cuadros componen el tablero de ajedréz?", respuestas23, 0);
+        Pregunta pregunta24 = new Pregunta("¿Cuántos cuadros componen el tablero de ajedréz?", respuestas24, 0);
         preguntas.add(pregunta24);
 
         String[] respuestas25 = new String[]{"Pete Sampras","Roger Federer", "Novak Djokovic", "John McEnroe"};
-        Pregunta pregunta25 = new Pregunta("¿Cuál es el jugador de tenis con más títulos del torneo de Wimbledon?", respuestas23, 1);
+        Pregunta pregunta25 = new Pregunta("¿Cuál es el jugador de tenis con más títulos del torneo de Wimbledon?", respuestas25, 1);
         preguntas.add(pregunta25);
     }
 
