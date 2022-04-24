@@ -10,7 +10,7 @@ public class Pregunta {
         this.enunciadoPregunta = enunciadoPregunta;
         this.respuestas = respuestas;
         this.correcta = correcta;
-   }
+    }
 
     public String getEnunciadoPregunta() {
         return enunciadoPregunta;

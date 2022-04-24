@@ -16,7 +16,7 @@ public class MenuInicio extends Imprimir {
     public String mostrarMenuDeInicio() {
         StringBuilder texto = new StringBuilder();
         texto.append(TITULO_JUEGO + "\n" +
-                "---------------------------" + "\n" + JUGAR + "\n" + HISTORIAL + "\n" + SALIR);
+                "-----------------------------" + "\n" + JUGAR + "\n" + HISTORIAL + "\n" + SALIR);
         return texto.toString();
     }
 
