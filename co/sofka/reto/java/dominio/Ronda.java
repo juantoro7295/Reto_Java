@@ -37,12 +37,16 @@ public class Ronda extends Imprimir {
     }
 
     public int escogerPreguntaAleatoria() {
-        return this.escogerPregunta = (int) (Math.random() * ((26 + 1) - 0) + 0);
+        return this.escogerPregunta =  (int) (Math.random() * preguntasDatos.getPreguntas().size()+1);
+        //((25 + 1) - 0) + 0)
     }
 
     public void mostrarPreguntaJuego() {
         imprimirMesaje("" + preguntasDatos.getPreguntas().get(escogerPreguntaAleatoria()));
+        //preguntasDatos.eliminarPregunta(this.escogerPregunta);
+
     }
+
 
 
 

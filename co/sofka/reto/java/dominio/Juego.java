@@ -4,14 +4,18 @@ import co.sofka.reto.java.util.Imprimir;
 import co.sofka.reto.java.util.MenuInicio;
 import co.sofka.reto.java.util.Teclado;
 
+import java.io.IOException;
+
 
 public class Juego extends Imprimir {
 
-   //clases necesarias
+    //clases necesarias
     MenuInicio menuInicio;
     Teclado teclado;
     Ronda ronda;
     PreguntasDatos preguntasDatos;
+    Jugador jugador;
+    Historial historial;
 
     //variables necesarias
     private int respuestaDelJugador;
@@ -19,48 +23,54 @@ public class Juego extends Imprimir {
     private int contadorPreguntas;
     private boolean deseaContinuar;
 
-    public Juego(){
+    public Juego() throws IOException {
         //instancias
         menuInicio = new MenuInicio();
         teclado = new Teclado();
         ronda = new Ronda();
         preguntasDatos = new PreguntasDatos();
+        jugador = new Jugador("", 0);
+        historial = new Historial();
         //variables
 
     }
-//Menu Principal
-    public void menuInicioJuego(){
-      imprimirMesaje(menuInicio.mostrarMenuDeInicio());
-        switch(teclado.pedirRespuestaJugadorPorTeclado()){
+
+    //Menu Principal
+    public void menuInicioJuego()  {
+        imprimirMesaje(menuInicio.mostrarMenuDeInicio());
+        switch (teclado.pedirRespuestaJugadorPorTeclado()) {
             case 1:
                 //Jugar
-                do{
+                //pide el nombre del jugador
+                crearJugadorJuego(teclado);
+                //iniciar a pedir preguntas
+                do {
+                    //pinta la pregunta en la consola
                     ronda.mostrarPreguntaJuego();
-                    if(verificarSiLaRespuestaDelJugadorEsCorrecta()){
-                        this.contadorPreguntas +=1;
-                        imprimirMesaje("Respuesta Correcta");
-                        if(this.contadorPreguntas <= 4){
+                    //validacion y accion de la respuesta del jugador
+                    if (verificarSiLaRespuestaDelJugadorEsCorrecta()) {
+                        this.contadorPreguntas += 1;
+                        imprimirMesaje(menuInicio.notificarRespuestaCorrecta());
+                        if (this.contadorPreguntas <= 4) {
                             menuDeseaContinuarJugando();
                         }
 
 
-
-                    }else{
-                        imprimirMesaje("Perdiste");
+                    } else {
+                        imprimirMesaje(menuInicio.notificarRespuestaIncorrecta());
+                        imprimirMesaje(menuInicio.notificarFinDelJuego());
                         System.exit(0);
                     }
-                }while(this.contadorPreguntas <=4 && this.deseaContinuar);
-                imprimirMesaje("tu puntaje es: "+ puntaje);
-
-
-
-
-
-
+                } while (this.contadorPreguntas <= 4 && this.deseaContinuar);
+                imprimirMesaje("*** Ganaste ***");
+                agregaElPuntajeQueObtuvoEnElJuego();
+                imprimirMesaje(jugador.getNombre() + " tu puntaje es: " + jugador.getPuntaje());
+                historial.almacenarHistorial(jugador.getNombre(),jugador.getPuntaje());
                 break;
             case 2:
                 //Historial
                 //manejarlo con texto plano
+                historial.leerHistorial();
                 break;
             case 3:
                 //Salir
@@ -71,10 +81,11 @@ public class Juego extends Imprimir {
                 break;
         }
     }
+
     //Menu preguntando si desea continuar jugando
-    public void menuDeseaContinuarJugando(){
+    public void menuDeseaContinuarJugando() {
         imprimirMesaje(menuInicio.mostrarDeseaContinuar());
-        switch(teclado.pedirRespuestaJugadorPorTeclado()){
+        switch (teclado.pedirRespuestaJugadorPorTeclado()) {
             case 1:
                 //Respuesta SI
                 this.deseaContinuar = true;
@@ -83,7 +94,6 @@ public class Juego extends Imprimir {
             case 2:
                 //Respuesta No
                 this.deseaContinuar = false;
-                //pide nombre y guarda
                 break;
             default:
                 //Parametro no valido
@@ -93,27 +103,36 @@ public class Juego extends Imprimir {
 
     //Pedir respuesta correcta
 
-    public int obtenerRespuestaCorrecta(){
+    public int obtenerRespuestaCorrecta() {
         return preguntasDatos.getPreguntas().get(ronda.getEscogerPregunta()).getCorrecta();
-
     }
+
     //Pedir respuesta jugador
-    public int obtenerRespuestaDelJugador(){
+    public int obtenerRespuestaDelJugador() {
         this.respuestaDelJugador = teclado.pedirRespuestaJugadorPorTeclado();
         return this.respuestaDelJugador;
     }
 
-    public boolean verificarSiLaRespuestaDelJugadorEsCorrecta(){
-        if(obtenerRespuestaCorrecta() == obtenerRespuestaDelJugador()-1){
+    //Verifica si la respuesta del jugador es correcta, si es verdadero le suma puntaje
+    public boolean verificarSiLaRespuestaDelJugadorEsCorrecta() {
+        if (obtenerRespuestaCorrecta() == obtenerRespuestaDelJugador() - 1) {
             //subir puntaje
-            this.puntaje = puntaje +100;
-
+            this.puntaje = puntaje + 100;
             return true;
-
-        }else{
+        } else {
 
             return false;
-
         }
+    }
+
+    //solicita un jugador y lo guarda
+    public void crearJugadorJuego(Teclado teclado) {
+        imprimirMesaje("---------------------------\nIngresa tú nombre:");
+        jugador.setNombre(teclado.pedirNombreJugadorPorTeclado());
+    }
+
+    //le agrega el puntaje que gano durante la ronda
+    public void agregaElPuntajeQueObtuvoEnElJuego() {
+        jugador.setPuntaje(this.puntaje);
     }
 }

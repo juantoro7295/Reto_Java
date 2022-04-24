@@ -24,7 +24,7 @@ public class PreguntasDatos {
 
 
         String[] respuestas3 = new String[]{"J Wallaby 36 Sydney", "Bajo Californio", "P Sherman 42 Wallaby Way Sidney", "La CA2"};
-        Pregunta pregunta3 = new Pregunta("¿Cual es la direcion con la que Dori estaba buscando a Nemo?", respuestas3, 3);
+        Pregunta pregunta3 = new Pregunta("¿Cual es la direcion con la que Dori estaba buscando a Nemo?", respuestas3, 2);
         preguntas.add(pregunta3);
 
         String[] respuestas4 = new String[]{"Iron Man", "The Hulk", "the Avengers", "Spiderman"};
@@ -120,6 +120,9 @@ public class PreguntasDatos {
 
     public List<Pregunta> getPreguntas() {
         return preguntas;
+    }
+    public void eliminarPregunta(int posicion){
+        preguntas.remove(posicion);
     }
 
 
