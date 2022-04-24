@@ -15,7 +15,7 @@ public class PreguntasDatos {
         preguntas.add(pregunta);
 
         String[] respuestas1 = new String[]{"1492", "1520", "1914", "1939"};
-        Pregunta pregunta1 = new Pregunta("¿En que año fue la primera guerra mundial?", respuestas1, 3);
+        Pregunta pregunta1 = new Pregunta("¿En que año fue la primera guerra mundial?", respuestas1, 2);
         preguntas.add(pregunta1);
 
         String[] respuestas2 = new String[]{"1492", "1939", "1914", "1945"};

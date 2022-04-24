@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Ronda extends Imprimir {
+    //clases necesarias
+    PreguntasDatos preguntasDatos;
+    //variables necesarias;
     private int ronda;
     private int escogerPregunta;
 
-    PreguntasDatos preguntasDatos;
-
     public Ronda() {
+        //instancia
         preguntasDatos = new PreguntasDatos();
 
 
@@ -41,5 +43,7 @@ public class Ronda extends Imprimir {
     public void mostrarPreguntaJuego() {
         imprimirMesaje("" + preguntasDatos.getPreguntas().get(escogerPreguntaAleatoria()));
     }
+
+
 
 }
