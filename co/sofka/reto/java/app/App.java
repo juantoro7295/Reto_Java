@@ -28,7 +28,8 @@ public class App {
         //preguntasDatos.getPreguntas().get(ronda.escogerPreguntaAleatoria()).getCorrecta();
         //imprimir.imprimirMesaje(menu.mostrarDeseaContinuar());
         //juego.deseaContinuarMenu(teclado);
-        juego.continuarMenu(teclado);
+        //juego.continuarMenu(teclado);
+        juego.menuInicioJuego();
 
     }
 }
