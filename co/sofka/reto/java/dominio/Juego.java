@@ -1,7 +1,9 @@
 package co.sofka.reto.java.dominio;
+
 import co.sofka.reto.java.util.Imprimir;
 import co.sofka.reto.java.util.MenuInicio;
 import co.sofka.reto.java.util.Teclado;
+
 import java.io.IOException;
 
 public class Juego extends Imprimir {
@@ -33,7 +35,7 @@ public class Juego extends Imprimir {
     }
 
     //Menu Principal
-    public void menuInicioJuego()  {
+    public void menuInicioJuego() {
         imprimirMesaje(menuInicio.mostrarMenuDeInicio());
         switch (teclado.pedirRespuestaJugadorPorTeclado()) {
             case 1:
@@ -98,6 +100,7 @@ public class Juego extends Imprimir {
             return false;
         }
     }
+
     //solicita un jugador y lo guarda
     public void crearJugadorJuego(Teclado teclado) {
         imprimirMesaje("---------------------------\nIngresa tú nombre:");
@@ -108,8 +111,9 @@ public class Juego extends Imprimir {
     public void agregaElPuntajeQueObtuvoEnElJuego() {
         jugador.setPuntaje(this.puntaje);
     }
+
     //Este método permite unificar el mostrar pregunta, validar preguntas y validar la ronda
-    public void unificadorDeMostraryvalidarRondaPreguntas(){
+    public void unificadorDeMostraryvalidarRondaPreguntas() {
         do {
             //pinta la pregunta en la consola
             ronda.mostrarPreguntaJuego();
@@ -130,15 +134,15 @@ public class Juego extends Imprimir {
     }
 
     //Este método me imprime un mensaje, me le agrega el puntaje al usuario y le muestra sun nombre con su puntaje
-    public void unificadorFinalizaElJuego(){
+    public void unificadorFinalizaElJuego() {
         imprimirMesaje("*** Ganaste ***");
         agregaElPuntajeQueObtuvoEnElJuego();
         imprimirMesaje(jugador.getNombre() + " tu puntaje es: " + jugador.getPuntaje());
-        historial.almacenarHistorial(jugador.getNombre(),jugador.getPuntaje());
+        historial.almacenarHistorial(jugador.getNombre(), jugador.getPuntaje());
     }
 
     //lee archivo y pinta historial
-    public void mostrarElHistorial(){
+    public void mostrarElHistorial() {
         imprimirMesaje(menuInicio.notificarHistorial());
         historial.leerHistorial();
     }

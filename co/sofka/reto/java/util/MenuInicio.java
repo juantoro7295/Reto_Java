@@ -25,6 +25,7 @@ public class MenuInicio extends Imprimir {
                 "-----------------------------" + "\n" + JUGAR + "\n" + HISTORIAL + "\n" + SALIR);
         return texto.toString();
     }
+
     //Menu deseo continuar
     public String mostrarDeseaContinuar() {
         StringBuilder texto = new StringBuilder();
@@ -33,17 +34,20 @@ public class MenuInicio extends Imprimir {
         return texto.toString();
     }
 
-    public String notificarRespuestaCorrecta(){
+    public String notificarRespuestaCorrecta() {
         return RESPUESTA_CORRECTA;
     }
-    public String notificarRespuestaIncorrecta(){
+
+    public String notificarRespuestaIncorrecta() {
         return RESPUESTA_INCORRECTA;
     }
-    public String notificarFinDelJuego(){
-        return PERDISTE + "\n"+"------------------------------"+"\n" + FIN_JUEGO ;
+
+    public String notificarFinDelJuego() {
+        return PERDISTE + "\n" + "------------------------------" + "\n" + FIN_JUEGO;
     }
-    public String notificarHistorial(){
-        return "---------------------------- "+"\n"+MOSTRAR_HISTORIAL+"\n";
+
+    public String notificarHistorial() {
+        return "---------------------------- " + "\n" + MOSTRAR_HISTORIAL + "\n";
     }
 
 
