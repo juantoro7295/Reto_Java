@@ -31,18 +31,6 @@ public class Pregunta {
         return correcta;
     }
 
-//    public void setCorrecta(int correcta) {
-//        this.correcta = correcta;
-//    }
-
-//    public int getRespuestaJugador() {
-//        return respuestaJugador;
-//    }
-//
-//    public void setRespuestaJugador(int respuestaJugador) {
-//        this.respuestaJugador = respuestaJugador;
-//    }
-
     @Override
     public String toString() {
         StringBuilder texto = new StringBuilder();
