@@ -8,8 +8,6 @@ public class PreguntasDatos {
 
     public PreguntasDatos() {
         preguntas = new ArrayList<Pregunta>();
-
-
         String[] respuestas = new String[]{"1492", "1520", "1898", "1710"};
         Pregunta pregunta = new Pregunta("¿En qué año se descubrió América?", respuestas, 0);
         preguntas.add(pregunta);
@@ -117,13 +115,7 @@ public class PreguntasDatos {
         preguntas.add(pregunta25);
     }
 
-
     public List<Pregunta> getPreguntas() {
         return preguntas;
     }
-    public void eliminarPregunta(int posicion){
-        preguntas.remove(posicion);
-    }
-
-
 }

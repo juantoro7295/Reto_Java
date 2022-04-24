@@ -1,11 +1,8 @@
 package co.sofka.reto.java.dominio;
-
 import co.sofka.reto.java.util.Imprimir;
 import co.sofka.reto.java.util.MenuInicio;
 import co.sofka.reto.java.util.Teclado;
-
 import java.io.IOException;
-
 
 public class Juego extends Imprimir {
 
@@ -44,40 +41,19 @@ public class Juego extends Imprimir {
                 //pide el nombre del jugador
                 crearJugadorJuego(teclado);
                 //iniciar a pedir preguntas
-                do {
-                    //pinta la pregunta en la consola
-                    ronda.mostrarPreguntaJuego();
-                    //validacion y accion de la respuesta del jugador
-                    if (verificarSiLaRespuestaDelJugadorEsCorrecta()) {
-                        this.contadorPreguntas += 1;
-                        imprimirMesaje(menuInicio.notificarRespuestaCorrecta());
-                        if (this.contadorPreguntas <= 4) {
-                            menuDeseaContinuarJugando();
-                        }
-
-
-                    } else {
-                        imprimirMesaje(menuInicio.notificarRespuestaIncorrecta());
-                        imprimirMesaje(menuInicio.notificarFinDelJuego());
-                        System.exit(0);
-                    }
-                } while (this.contadorPreguntas <= 4 && this.deseaContinuar);
-                imprimirMesaje("*** Ganaste ***");
-                agregaElPuntajeQueObtuvoEnElJuego();
-                imprimirMesaje(jugador.getNombre() + " tu puntaje es: " + jugador.getPuntaje());
-                historial.almacenarHistorial(jugador.getNombre(),jugador.getPuntaje());
+                unificadorDeMostraryvalidarRondaPreguntas();
+                unificadorFinalizaElJuego();
                 break;
             case 2:
                 //Historial
-                //manejarlo con texto plano
-                historial.leerHistorial();
+                mostrarElHistorial();
                 break;
             case 3:
                 //Salir
                 System.exit(0);
                 break;
             default:
-                //Parametro no valido
+                //Parámetro no valido
                 break;
         }
     }
@@ -89,14 +65,13 @@ public class Juego extends Imprimir {
             case 1:
                 //Respuesta SI
                 this.deseaContinuar = true;
-
                 break;
             case 2:
                 //Respuesta No
                 this.deseaContinuar = false;
                 break;
             default:
-                //Parametro no valido
+                //Parámetro no valido
                 break;
         }
     }
@@ -120,11 +95,9 @@ public class Juego extends Imprimir {
             this.puntaje = puntaje + 100;
             return true;
         } else {
-
             return false;
         }
     }
-
     //solicita un jugador y lo guarda
     public void crearJugadorJuego(Teclado teclado) {
         imprimirMesaje("---------------------------\nIngresa tú nombre:");
@@ -134,5 +107,39 @@ public class Juego extends Imprimir {
     //le agrega el puntaje que gano durante la ronda
     public void agregaElPuntajeQueObtuvoEnElJuego() {
         jugador.setPuntaje(this.puntaje);
+    }
+    //Este método permite unificar el mostrar pregunta, validar preguntas y validar la ronda
+    public void unificadorDeMostraryvalidarRondaPreguntas(){
+        do {
+            //pinta la pregunta en la consola
+            ronda.mostrarPreguntaJuego();
+            //validación y acción de la respuesta del jugador
+            if (verificarSiLaRespuestaDelJugadorEsCorrecta()) {
+                this.contadorPreguntas += 1;
+                imprimirMesaje(menuInicio.notificarRespuestaCorrecta());
+                if (this.contadorPreguntas <= 4) {
+                    menuDeseaContinuarJugando();
+                }
+            } else {
+                imprimirMesaje(menuInicio.notificarRespuestaIncorrecta());
+                imprimirMesaje(menuInicio.notificarFinDelJuego());
+                System.exit(0);
+            }
+        } while (this.contadorPreguntas <= 4 && this.deseaContinuar);
+
+    }
+
+    //Este método me imprime un mensaje, me le agrega el puntaje al usuario y le muestra sun nombre con su puntaje
+    public void unificadorFinalizaElJuego(){
+        imprimirMesaje("*** Ganaste ***");
+        agregaElPuntajeQueObtuvoEnElJuego();
+        imprimirMesaje(jugador.getNombre() + " tu puntaje es: " + jugador.getPuntaje());
+        historial.almacenarHistorial(jugador.getNombre(),jugador.getPuntaje());
+    }
+
+    //lee archivo y pinta historial
+    public void mostrarElHistorial(){
+        imprimirMesaje(menuInicio.notificarHistorial());
+        historial.leerHistorial();
     }
 }

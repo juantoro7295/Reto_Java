@@ -16,6 +16,8 @@ public class MenuInicio extends Imprimir {
 
     private static final String FIN_JUEGO = "Gracias por jugar";
 
+    private static final String MOSTRAR_HISTORIAL = "***HISTORIAL***";
+
     //Menu de inicio
     public String mostrarMenuDeInicio() {
         StringBuilder texto = new StringBuilder();
@@ -40,4 +42,9 @@ public class MenuInicio extends Imprimir {
     public String notificarFinDelJuego(){
         return PERDISTE + "\n"+"------------------------------"+"\n" + FIN_JUEGO ;
     }
+    public String notificarHistorial(){
+        return "---------------------------- "+"\n"+MOSTRAR_HISTORIAL+"\n";
+    }
+
+
 }

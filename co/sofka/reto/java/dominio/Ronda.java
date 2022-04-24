@@ -1,53 +1,27 @@
 package co.sofka.reto.java.dominio;
-
 import co.sofka.reto.java.util.Imprimir;
-import co.sofka.reto.java.util.Teclado;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 public class Ronda extends Imprimir {
     //clases necesarias
     PreguntasDatos preguntasDatos;
-    //variables necesarias;
-    private int ronda;
+
     private int escogerPregunta;
 
     public Ronda() {
         //instancia
         preguntasDatos = new PreguntasDatos();
-
-
     }
-
-    public int getRonda() {
-        return ronda;
-    }
-
-    public void setRonda(int ronda) {
-        this.ronda = ronda;
-    }
-
     public int getEscogerPregunta() {
         return escogerPregunta;
     }
 
-    public void setEscogerPregunta(int escogerPregunta) {
-        this.escogerPregunta = escogerPregunta;
-    }
-
+    //Entrega un numero aleatorio del tamaño de la lista de preguntas datos
     public int escogerPreguntaAleatoria() {
-        return this.escogerPregunta =  (int) (Math.random() * preguntasDatos.getPreguntas().size()+1);
-        //((25 + 1) - 0) + 0)
+        return this.escogerPregunta =  (int) (Math.random() * preguntasDatos.getPreguntas().size());
     }
-
+    //Muestra la pregunta en el juego
     public void mostrarPreguntaJuego() {
         imprimirMesaje("" + preguntasDatos.getPreguntas().get(escogerPreguntaAleatoria()));
-        //preguntasDatos.eliminarPregunta(this.escogerPregunta);
-
     }
-
-
-
 
 }
