@@ -11,6 +11,8 @@ public class Juego extends Imprimir {
     private boolean continuarJugando;
     private boolean respondioBien;
 
+    private boolean pasoCreacionJugador;
+
     PreguntasDatos preguntasDatos;
     Jugador jugador;
     Ronda ronda;
@@ -23,27 +25,32 @@ public class Juego extends Imprimir {
         this.continuo = true;
         this.continuarJugando = true;
         this.respondioBien = true;
+        this.pasoCreacionJugador = true;
         this.respuestaJugadorPregunta = -1;
         preguntasDatos = new PreguntasDatos();
-        jugador = new Jugador("", 0);
+        jugador = new Jugador("user", 0);
         ronda = new Ronda();
         historial = new Historial();
 
     }
 
 
-
     public boolean crearJugadorJuego(Teclado teclado) {
         imprimirMesaje("---------------------------\nIngresa tú nombre:");
         jugador.setNombre(teclado.pedirNombreJugadorPorTeclado());
+        this.pasoCreacionJugador = false;
         return true;
     }
+
 
     public void queOpcionEligioEnElMenu(Teclado teclado) {
         switch (teclado.pedirRespuestaJugadorPorTeclado()) {
             case 1:
                 //jugar
+                //pedir usuario
+                //crearJugadorJuego(teclado);
                 deseaContinuarMenu(teclado);
+
                 this.continuo = false;
                 break;
             case 2:
@@ -53,6 +60,8 @@ public class Juego extends Imprimir {
             case 3:
                 //Salir
                 this.continuo = false;
+                this.respondioBien = false;
+                this.continuarJugando = false;
                 break;
             default:
                 //Parametro invalido
@@ -61,9 +70,11 @@ public class Juego extends Imprimir {
 
         }
     }
+
     public void continuarMenu(Teclado teclado) {
 
         do {
+
             imprimirMesaje(menuInicio.mostrarMenuDeInicio());
             queOpcionEligioEnElMenu(teclado);
 
@@ -84,7 +95,7 @@ public class Juego extends Imprimir {
 
     //imprime el menu  desea continuar y verifica
     //sale despues de responder una pregunta correctamente
-   // private boolean continuarJugando;
+    // private boolean continuarJugando;
 
     public void opcionDelMenuContinuar(Teclado teclado) {
         switch (teclado.pedirRespuestaJugadorPorTeclado()) {
@@ -99,7 +110,7 @@ public class Juego extends Imprimir {
                 this.respondioBien = false;
                 historial.getHistorialJugadores().add(jugador);
                 imprimirMesaje(historial.toString());
-                arranqueYControlDelJuego(teclado);
+                volverAJugar(teclado);
                 break;
             default:
                 //Jugador responde un parametro invalido
@@ -109,6 +120,7 @@ public class Juego extends Imprimir {
         }
 
     }
+
     //boolean respondioBien = true;
     public void deseaContinuarMenu(Teclado teclado) {
 
@@ -118,19 +130,18 @@ public class Juego extends Imprimir {
                 imprimirMesaje(menuInicio.mostrarDeseaContinuar());
                 opcionDelMenuContinuar(teclado);
             }
-            arranqueYControlDelJuego(teclado);
+            volverAJugar(teclado);
 
         } while (continuarJugando);
     }
 
-    public void arranqueYControlDelJuego(Teclado teclado){
-        if(!(this.respondioBien)){
+    public void volverAJugar(Teclado teclado) {
+        if (!(this.respondioBien)) {
             this.continuo = true;
             this.continuarJugando = true;
             this.respondioBien = true;
             continuarMenu(teclado);
         }
-
 
 
     }
@@ -152,6 +163,7 @@ public class Juego extends Imprimir {
     }
 
     public void pedirMostrarYvalidarOpciones(Teclado teclado) {
+
         ronda.mostrarPreguntaJuego();
         this.respuestaJugadorPregunta = teclado.pedirRespuestaJugadorPorTeclado() - 1;
         laPreguntaSeRespondeCorrectamente(teclado);

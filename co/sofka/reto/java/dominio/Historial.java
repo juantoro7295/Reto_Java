@@ -21,7 +21,7 @@ public class Historial {
 
         StringBuilder texto = new StringBuilder();
 
-        texto.append("---------------------------"+"\n"+"*** Historial ***"+"\n"+"PUNTAJE: " +  "\n");
+        texto.append("---------------------------" + "\n" + "*** Historial ***" + "\n" + "PUNTAJE: " + "\n");
         for (int i = 0; i < this.historialJugadores.size(); i++) {
             texto.append("  ").append(i + 1).append(") ");
             texto.append(this.historialJugadores.get(i).getNombre()).append(" -> ").append(this.historialJugadores.get(i).getPuntaje());

@@ -104,15 +104,15 @@ public class PreguntasDatos {
         preguntas.add(pregunta22);
 
 
-        String[] respuestas23 = new String[]{"1","9", "11", "10"};
+        String[] respuestas23 = new String[]{"1", "9", "11", "10"};
         Pregunta pregunta23 = new Pregunta("¿Con qué número jugaba Carlos 'El Pibe' Valderrama en la selección Colombia?", respuestas23, 3);
         preguntas.add(pregunta23);
 
-        String[] respuestas24 = new String[]{"64","60", "56", "58"};
+        String[] respuestas24 = new String[]{"64", "60", "56", "58"};
         Pregunta pregunta24 = new Pregunta("¿Cuántos cuadros componen el tablero de ajedréz?", respuestas24, 0);
         preguntas.add(pregunta24);
 
-        String[] respuestas25 = new String[]{"Pete Sampras","Roger Federer", "Novak Djokovic", "John McEnroe"};
+        String[] respuestas25 = new String[]{"Pete Sampras", "Roger Federer", "Novak Djokovic", "John McEnroe"};
         Pregunta pregunta25 = new Pregunta("¿Cuál es el jugador de tenis con más títulos del torneo de Wimbledon?", respuestas25, 1);
         preguntas.add(pregunta25);
     }
