@@ -15,7 +15,7 @@ public class Teclado {
     }
 
     public String pedirNombreJugadorPorTeclado() {
-        return scanner.nextLine();
+        return scanner.next();
     }
 
 }

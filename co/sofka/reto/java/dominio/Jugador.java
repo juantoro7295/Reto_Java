@@ -1,6 +1,9 @@
 package co.sofka.reto.java.dominio;
 
-public class Jugador {
+import co.sofka.reto.java.util.Imprimir;
+import co.sofka.reto.java.util.Teclado;
+
+public class Jugador extends Imprimir {
     private String nombre;
     private int puntaje;
 
@@ -24,6 +27,8 @@ public class Jugador {
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
+
+
 
 
 }

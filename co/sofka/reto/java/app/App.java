@@ -6,10 +6,11 @@ import co.sofka.reto.java.dominio.Ronda;
 import co.sofka.reto.java.util.Imprimir;
 import co.sofka.reto.java.util.MenuInicio;
 import co.sofka.reto.java.util.Teclado;
+import java.io.IOException;
 
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, IOException {
         Juego juego = new Juego();
         Teclado teclado = new Teclado();
         MenuInicio menu = new MenuInicio();
@@ -28,7 +29,9 @@ public class App {
         //preguntasDatos.getPreguntas().get(ronda.escogerPreguntaAleatoria()).getCorrecta();
         //imprimir.imprimirMesaje(menu.mostrarDeseaContinuar());
         //juego.deseaContinuarMenu(teclado);
-        juego.continuarMenu(teclado);
+        //juego.continuarMenu(teclado);
+        juego.menuInicioJuego();
+
 
     }
 }
