@@ -10,6 +10,7 @@ public class Juego extends Imprimir {
     private boolean continuo;
     private boolean continuarJugando;
     private boolean respondioBien;
+    private int numeroJugador;
 
     private boolean pasoCreacionJugador;
 
@@ -27,6 +28,7 @@ public class Juego extends Imprimir {
         this.respondioBien = true;
         this.pasoCreacionJugador = true;
         this.respuestaJugadorPregunta = -1;
+        this.numeroJugador = 0;
         preguntasDatos = new PreguntasDatos();
         jugador = new Jugador("user", 0);
         ronda = new Ronda();
@@ -49,6 +51,7 @@ public class Juego extends Imprimir {
                 //jugar
                 //pedir usuario
                 //crearJugadorJuego(teclado);
+                historial.getHistorialJugadores().add(jugador);
                 deseaContinuarMenu(teclado);
 
                 this.continuo = false;
@@ -62,6 +65,7 @@ public class Juego extends Imprimir {
                 this.continuo = false;
                 this.respondioBien = false;
                 this.continuarJugando = false;
+                System.exit(0);
                 break;
             default:
                 //Parametro invalido
@@ -103,12 +107,14 @@ public class Juego extends Imprimir {
                 //jugador responde SI
                 this.continuarJugando = true;
 
+
                 break;
             case 2:
+                this.numeroJugador = numeroJugador + 1;
                 //Jugador responde NO
                 this.continuarJugando = false;
                 this.respondioBien = false;
-                historial.getHistorialJugadores().add(jugador);
+                //historial.getHistorialJugadores().add(jugador);
                 imprimirMesaje(historial.toString());
                 volverAJugar(teclado);
                 break;
@@ -118,6 +124,10 @@ public class Juego extends Imprimir {
                 break;
 
         }
+
+    }
+
+    public void jugadorPuntaje(){
 
     }
 
@@ -148,7 +158,8 @@ public class Juego extends Imprimir {
 
     public void laPreguntaSeRespondeCorrectamente(Teclado teclado) {
         if (validarPreguntaMostradaJuego(teclado)) {
-            jugador.setPuntaje(jugador.getPuntaje() + 100);
+            //jugador.setPuntaje(jugador.getPuntaje() + 100);
+            historial.getHistorialJugadores().get(this.numeroJugador).setPuntaje(jugador.getPuntaje()+100);
             imprimirMesaje("muy bien, respuesta correcta");
         }
     }
@@ -157,7 +168,8 @@ public class Juego extends Imprimir {
     public void laPreguntaSeRepondeIncorrectamente(Teclado teclado) {
         if (!validarPreguntaMostradaJuego(teclado)) {
             this.respondioBien = false;
-            jugador.setPuntaje(0);
+            //jugador.setPuntaje(0);
+            historial.getHistorialJugadores().get(this.numeroJugador).setPuntaje(0);
             imprimirMesaje(" UPSS, Respuesta incorrecta");
         }
     }

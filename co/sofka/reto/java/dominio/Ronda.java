@@ -10,11 +10,15 @@ public class Ronda extends Imprimir {
     private int ronda;
     private int escogerPregunta;
 
+
+    private ArrayList<Integer> preguntaYaUsadas;
+
+
     PreguntasDatos preguntasDatos;
 
     public Ronda() {
         preguntasDatos = new PreguntasDatos();
-
+        preguntaYaUsadas = new ArrayList<Integer>();
 
     }
 
@@ -35,11 +39,25 @@ public class Ronda extends Imprimir {
     }
 
     public int escogerPreguntaAleatoria() {
-        return this.escogerPregunta = (int) (Math.random() * ((26 + 1) - 0) + 0);
+        return this.escogerPregunta =  (int) (Math.random() * preguntasDatos.getPreguntas().size()+1);
+        //((25 + 1) - 0) + 0)
+    }
+    public void imprimirRandom(){
+        imprimirMesaje(""+escogerPreguntaAleatoria());
     }
 
     public void mostrarPreguntaJuego() {
         imprimirMesaje("" + preguntasDatos.getPreguntas().get(escogerPreguntaAleatoria()));
+        preguntasDatos.eliminarPregunta(this.escogerPregunta);
+        //imprimirMesaje("" + preguntasDatos.getPreguntas().get(numeroAletorioDefinitivo()));
     }
+
+    public void test(){
+        for (int i = 0; i < 23;i++){
+            mostrarPreguntaJuego();
+        }
+    }
+
+
 
 }

@@ -16,6 +16,10 @@ public class Historial {
         return historialJugadores;
     }
 
+    public void setHistorialJugadores(List<Jugador> historialJugadores) {
+        this.historialJugadores = historialJugadores;
+    }
+
     @Override
     public String toString() {
 
