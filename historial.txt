@@ -1,0 +1,3 @@
+* Alejandro  -> Puntaje: 500
+* Juan  -> Puntaje: 100
+* Juanes  -> Puntaje: 500
