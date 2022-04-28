@@ -27,3 +27,7 @@ _Juego de preguntas desarrollado con Java y funcionando mendiante consola._
 - Juan Esteban Velasquez
 
 _Este proyecto fue trabajado mediante Pair Programming casi en su totalidad mediante el plugin "Code With Me" incluido en IntelliJ Ultimate._
+
+#video explicativo del codigo
+
+https://drive.google.com/file/d/1inOgzKEK2SlrF3opcplIAXFr_4ARq0sf/view?usp=sharing
